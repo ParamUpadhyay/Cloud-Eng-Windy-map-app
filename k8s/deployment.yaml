@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: windy-map-app-deployment
+  labels:
+    app: windy-map-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: windy-map-app
+  template:
+    metadata:
+      labels:
+        app: windy-map-app
+    spec:
+      containers:
+        - name: windy-map-app-k8s-test
+          image: param1999/windy-react-app:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: REACT_APP_WINDY_MAP_KEY
+              value: "itOm9IOUMjEiaGwLUTvAdAq5gjGd9F1g"
